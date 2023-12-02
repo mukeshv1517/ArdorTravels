@@ -1,0 +1,10 @@
+package testcases;
+import org.openqa.Selenium;
+import org.testng.annotations.Test;
+
+public class Newtest {
+@Test
+public void login() {
+	WebDriver driver = new FirefoxDriver();
+}
+}

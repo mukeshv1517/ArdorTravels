@@ -1,0 +1,15 @@
+package com.utilities;
+
+import org.openqa.selenium.WebDriver;
+
+public class AppUtilities {
+public WebDriver driver;
+//Test Data
+public String url="https://ardortravels.com";
+public String username="admin@ardortravels.com";
+public String password="Ardor123!";
+
+//Objects
+public String txt_username="ardoremail1";
+public String txt_password="ardorpassword2";
+}

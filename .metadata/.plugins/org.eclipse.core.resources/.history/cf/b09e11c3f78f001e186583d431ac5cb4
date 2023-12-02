@@ -1,0 +1,86 @@
+package com.ardor.corporate;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
+
+import com.utilities.AppUtilities;
+
+import java.time.Duration;
+
+public class Flights_in_corporate extends AppUtilities {
+	@Test
+public void openapp()throws Exception{
+	
+	// Assigning Firefoxdriver
+	WebDriver driver =new FirefoxDriver();
+	
+	//Navigating to app url
+	driver.navigate().to(url);
+	System.out.print(driver.getTitle());
+	
+	//Select login
+    WebElement loginLink = driver.findElement(By.linkText("Login"));
+    loginLink.click();
+	
+    //Select corporate login
+        
+    WebElement corporateLoginButton = driver.findElement(By.linkText("Corporate Login"));
+    corporateLoginButton.click();	 
+	System.out.println("Corporate login selected");
+	Thread.sleep(2000);
+	 JavascriptExecutor Js1 = (JavascriptExecutor)driver;
+	 	Js1.executeScript("window.scrollBy(0,500)");
+	 	Thread.sleep(2000);
+	WebElement  acceptCookieButton=(driver.findElement(By.xpath("//input[@value='Accept']")));
+	 
+     acceptCookieButton.click();
+     
+     System.out.println("Cookie Accepted");
+    
+    
+    
+		driver.findElement(By.name("ardoremail1")).sendKeys("admin@ardortravels.com");
+		driver.findElement(By.name("ardorpassword2")).sendKeys("Ardor123!");
+		driver.findElement(By.xpath("//button[normalize-space()='LOGIN']")).click();
+		System.out.println("Login completed");
+		Thread.sleep(2000);
+    
+		 JavascriptExecutor Js2 = (JavascriptExecutor)driver;
+		 	Js2.executeScript("window.scrollBy(0,300)");
+		 	
+		 	Thread.sleep(4000);		 	
+		driver.findElement(By.xpath("//span[contains(text(),'Flights')]")).click();
+		driver.findElement(By.xpath("//"
+				+ "div[@class='jp-flightautocomplete-from-container']"
+				+ "//div[@role='presentation']")).click();
+		driver.findElement(By.id("myTextField")).sendKeys("Mum");
+        
+            Thread.sleep(3000);
+           
+
+		Select st1 =new Select(driver.findElement(By.cssSelector(".jp-city-country")));
+		driver.findElement(By.cssSelector(".jp-city-country")).click();
+		st1.selectByVisibleText("Mumbai,India");
+		System.out.println("Mumbai selected");
+		driver.findElement(By.xpath("//div[@class='jp-flightautocomplete-to-container']"
+				+ "//div[@role='presentation']")).click();
+		driver.findElement(By.xpath("//input[@id='myTextField']")).sendKeys("hyd");
+		Select st2 =new Select (driver.findElement(By.xpath("//span[normalize-space()='India']")));
+		driver.findElement(By.xpath("//span[normalize-space()='India']")).click();
+		st2.selectByVisibleText("Hyderabad,India");
+		System.out.println("Hyderabad selected");
+		driver.findElement(By.xpath("//div[normalize-space()='Thu, NOV 30']")).click();
+		WebElement departureDateInput = driver.findElement(By.id("departureDate"));
+        departureDateInput.click();
+        WebElement desiredDate = driver.findElement(By.id("date-2023-12-25"));
+        desiredDate.click();
+		
+		
+		
+		
+}
+}

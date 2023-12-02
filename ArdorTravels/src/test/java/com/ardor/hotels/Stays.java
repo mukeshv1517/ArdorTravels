@@ -1,0 +1,49 @@
+package com.ardor.hotels;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+
+import com.utilities.AppUtilities;
+
+public class Stays extends AppUtilities {
+@Test
+public void openapp()throws Exception {
+	WebDriver driver =new FirefoxDriver();
+	driver.navigate().to(url);
+	 WebElement loginLink = driver.findElement(By.linkText("Login"));
+	 loginLink.click();
+	    WebElement corporateLoginButton = driver.findElement(By.linkText("Corporate Login"));
+	    corporateLoginButton.click();
+	    System.out.println("Corporate login selected");
+		Thread.sleep(2000);
+		 JavascriptExecutor Js1 = (JavascriptExecutor)driver;
+		 	Js1.executeScript("window.scrollBy(0,500)");
+		 	Thread.sleep(2000);
+		WebElement  acceptCookieButton=(driver.findElement(By.xpath("//input[@value='Accept']")));
+		 
+	     acceptCookieButton.click();
+	     driver.findElement(By.name("ardoremail1")).sendKeys("admin@ardortravels.com");
+			driver.findElement(By.name("ardorpassword2")).sendKeys("Ardor123!");
+			driver.findElement(By.xpath("//button[normalize-space()='LOGIN']")).click();
+			System.out.println("Login completed");
+			Thread.sleep(2000);
+	    
+			 JavascriptExecutor Js2 = (JavascriptExecutor)driver;
+			 	Js2.executeScript("window.scrollBy(0,300)");
+			 	Thread.sleep(2000);
+			 
+			// driver.findElement(By.xpath("//span[text()='City']")).click();
+			driver.findElement(By.xpath("//div[@class='jp-main-div-from-date']")).click();
+			driver.findElement(By.xpath("//div[@aria-label='Fri Dec 08 2023']//div[@id='box']")).click();
+			driver.findElement(By.xpath("//div[@class='jp-main-div-from-date']")).click();
+			driver.findElement(By.xpath("//div[@aria-label='Mon Dec 11 2023']//div[@id='box']")).click();
+			driver.findElement(By.xpath("//input[@class='jp-paxcongig-container']")).click();
+			driver.findElement(By.xpath("//button[@class='done']")).click();
+			driver.findElement(By.cssSelector("input[placeholder='Destination']")).click();
+			driver.findElement(By.xpath("//input[@placeholder='Destination']")).sendKeys("pune");
+			//Select st1=new Select(driver.findElement(By.))
+			driver.findElement(By.xpath("//li[@class='vt-inspira-autocomplete-menu-li active']"
+					+ "//span[@class='vt-inspira-loc-sea-type'][normalize-space()='City']")).click();
+}
+}

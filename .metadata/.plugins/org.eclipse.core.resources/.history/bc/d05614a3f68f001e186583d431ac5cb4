@@ -1,0 +1,14 @@
+package com.ardor.hotels;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.*;
+import org.testng.annotations.Test;
+
+import com.utilities.AppUtilities;
+
+public class Stays extends AppUtilities {
+@Test
+public void openapp() {
+	WebDriver driver =new FirefoxDriver();
+	driver.navigate().to(url);
+}
+}

@@ -1,0 +1,20 @@
+package com.ardor.Testcases;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
+
+public class Flights {
+	@Test
+public static void login() {
+
+	WebDriver driver=new FirefoxDriver();
+	
+	driver.navigate().to("https://dashready.ardortravels.com");
+	driver.findElement(By.xpath("//input[@id='mat-input-0']")).
+	sendKeys("ardoradmin@ardortravels.com");
+	driver.findElement(By.xpath("//input[@id='mat-input-1']")).sendKeys("hz5EKz4h2R");
+	driver.findElement(By.cssSelector("#mat-input-1")).click();
+	driver.findElement(By.xpath("//button[@type='submit']")).click();
+}
+}

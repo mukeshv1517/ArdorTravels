@@ -1,0 +1,12 @@
+package com.utilities;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class AppUtilities {
+public WebDriver driver=new FirefoxDriver();
+public String url="https://ardortravels.com/";
+public String username="admin@ardortravels.com";
+public String password="Ardor123!";
+
+}
